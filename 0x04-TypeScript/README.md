@@ -1,164 +1,72 @@
-# 0x04. Typescript
+# 0x04. TypeScript
 
-# TypeScript Basics
+## Basic Types in TypeScript
+
+Introduction to fundamental data types in TypeScript, including:
+- `number`
+- `string`
+- `boolean`
+- `object`
+- `array`
+- `tuple`
+- `enum`
+- `any`
+- `void`
+- `null` and `undefined`
+- Type inference and type assertions
 
 ## Interfaces, Classes, and Functions
 
-### Interfaces
-
-In TypeScript, interfaces allow you to define the shape of objects. They provide a blueprint for the structure that objects must adhere to. Here's an example:
-
-```typescript
-interface Person {
-  name: string;
-  age: number;
-}
-
-const user: Person = {
-  name: "John Doe",
-  age: 25,
-};
-```
-
-### Classes
-
-Classes enable you to create reusable and organized code by encapsulating data and behavior. Here's a simple class example:
-
-```typescript
-class Animal {
-  constructor(public name: string) {}
-
-  makeSound() {
-    console.log("Some generic sound");
-  }
-}
-
-const cat = new Animal("Whiskers");
-cat.makeSound();
-```
-
-### Functions
-
-Functions in TypeScript can be typed to specify parameter types and return types:
-
-```typescript
-function add(x: number, y: number): number {
-  return x + y;
-}
-
-const result = add(3, 7);
-```
+Understanding and using:
+- **Interfaces:**
+  - Defining custom data structures
+  - Extending interfaces
+- **Classes:**
+  - Creating classes
+  - Constructors and properties
+  - Methods and inheritance
+- **Functions:**
+  - Function types
+  - Optional and default parameters
+  - Arrow functions
 
 ## Working with the DOM and TypeScript
 
-TypeScript allows you to work with the DOM in a more type-safe manner. For example, you can use type assertions to specify the type of a DOM element:
-
-```typescript
-const myElement = document.getElementById("myElement") as HTMLInputElement;
-myElement.value = "Hello, TypeScript!";
-```
+Manipulating the Document Object Model (DOM) using TypeScript:
+- Selecting and modifying elements
+- Event handling with strongly-typed event listeners
+- Type-safe interaction with HTML elements
 
 ## Generic Types
 
-Generics enable you to write reusable, type-safe code that can work with different types. Here's a simple example of a generic function:
+Introduction to generic types in TypeScript:
+- Writing functions and classes with generic parameters
+- Reusable and flexible code with generics
+- Common use cases for generics
 
-```typescript
-function identity<T>(arg: T): T {
-  return arg;
-}
+## Using Namespaces
 
-const result = identity<string>("Hello, generics!");
-```
+Organizing code with namespaces in TypeScript:
+- Declaring and using namespaces
+- Avoiding naming conflicts
+- Grouping related code
 
-## Namespaces and Declaration Merging
+## Merging Declarations
 
-### Namespaces
+Understanding how TypeScript merges declarations:
+- Declaration merging for interfaces, namespaces, and classes
+- Handling conflicts and combining declarations
 
-Namespaces help organize code by encapsulating related functionality. For example:
+## Using Ambient Namespace to Import an External Library
 
-```typescript
-namespace Geometry {
-  export interface Point {
-    x: number;
-    y: number;
-  }
-
-  export function distance(p1: Point, p2: Point): number {
-    // Calculate distance
-    return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
-  }
-}
-
-const point1: Geometry.Point = { x: 0, y: 0 };
-const point2: Geometry.Point = { x: 3, y: 4 };
-const distance = Geometry.distance(point1, point2);
-```
-
-### Declaration Merging
-
-TypeScript allows you to merge declarations of the same entity. This is useful, for example, when working with interfaces and multiple declarations for the same object:
-
-```typescript
-interface Car {
-  brand: string;
-  speed: number;
-}
-
-interface Car {
-  model: string;
-}
-
-const myCar: Car = {
-  brand: "Toyota",
-  speed: 120,
-  model: "Camry",
-};
-```
-
-## Ambient Namespace for External Libraries
-
-To import an external library, you can use an ambient namespace declaration. For example, for the "axios" library:
-
-```typescript
-// typings/axios/index.d.ts
-declare namespace Axios {
-  interface AxiosResponse<T = any> {
-    data: T;
-    status: number;
-    // ... other properties
-  }
-
-  interface AxiosInstance {
-    (config: AxiosRequestConfig): Promise<AxiosResponse>;
-    // ... other methods
-  }
-
-  interface AxiosRequestConfig {
-    // ... configuration options
-  }
-}
-
-// app.ts
-const axiosInstance: Axios.AxiosInstance = axios.create();
-axiosInstance.get("/api/data").then((response: Axios.AxiosResponse) => {
-  console.log(response.data);
-});
-```
+Integrating external libraries in TypeScript:
+- Definition files for ambient namespaces
+- Importing and using external libraries
+- Type definitions for third-party libraries
 
 ## Basic Nominal Typing with TypeScript
 
-Nominal typing allows you to distinguish between types based on their names rather than their structures. TypeScript primarily uses structural typing, but you can achieve nominal typing using techniques like branding:
-
-```typescript
-type Brand<T, BrandName> = T & { __brand: BrandName };
-
-type Kilometers = Brand<number, "Kilometers">;
-
-function toKilometers(miles: number): Kilometers {
-  return miles as Kilometers;
-}
-
-const distanceInKm: Kilometers = toKilometers(10);
-```
-
-In this example, `Kilometers` is a nominal type created using the `Brand` utility, helping avoid accidental type mixing.
+Exploring nominal typing in TypeScript:
+- Creating nominal types using interfaces
+- Benefits and use cases of nominal typing
+- Comparison with structural typing

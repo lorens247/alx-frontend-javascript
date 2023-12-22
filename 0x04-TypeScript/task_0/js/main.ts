@@ -7,27 +7,27 @@ interface Student {
 }
 
 const student1: Student = {
-  firstName: "Levi",
-  lastName: "Ackerman",
+  firstName: "Lawrence",
+  lastName: "Ikhidero",
   age: 35,
-  location: "Paradis",
+  location: "Niger Delta, Nigeria",
 };
 
 const student2: Student = {
-  firstName: "Mikasa",
-  lastName: "Ackerman",
-  age: 20,
-  location: "Paradis",
+  firstName: "Anthony",
+  lastName: "Ikhidero",
+  age: 30,
+  location: "Lagos, Nigeria",
 };
 
 // create array containing the two students
 const studentsList: Student[] = [student1, student2];
 
-// Vanilla JS - render a table with student data
+// Vanilla JS function to render a table with student data
 function renderTable() {
   const table = document.createElement("table");
 
-  // create table header
+  // Create and append the table header
   const headerRow = table.insertRow();
   const headerCell1 = headerRow.insertCell(0);
   const headerCell2 = headerRow.insertCell(1);

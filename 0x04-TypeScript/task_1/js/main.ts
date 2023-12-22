@@ -7,18 +7,11 @@ interface Teacher {
     [key: string]: any;
 }
 
-//   const teacher1: Teacher = {
-//     firstName: 'Lawrence',
-//     fullTimeEmployee: true,
-//     lastName: 'Ikhidero',
-//     location: 'Niger Delta, Nigeria',
-//   };
-
 //   const teacher3: Teacher = {
 //     firstName: 'James',
 //     fullTimeEmployee: false,
 //     lastName: 'Smith',
-//     location: 'Lagos',
+//     location: 'London',
 //     contract: false,
 //   };
 
@@ -30,9 +23,9 @@ interface Directors extends Teacher {
 }
 
 //   const director1: Directors = {
-//     firstName: 'Erwin',
-//     lastName: 'Smith',
-//     location: 'Paradis Island',
+//     firstName: 'Lawrence',
+//     lastName: 'Ikhidero',
+//     location: 'Niger Delta, Lagos',
 //     fullTimeEmployee: true,
 //     numberOfReports: 17,
 //   };
